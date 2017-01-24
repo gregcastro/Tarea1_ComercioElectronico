@@ -29,6 +29,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(webservices.Aplicacion.class);
+        resources.add(webservices.BaseDeDatos.class);
+        resources.add(webservices.Internet.class);
+        resources.add(webservices.Router.class);
         resources.add(webservices.Servidor.class);
     }
     
