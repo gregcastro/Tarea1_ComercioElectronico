@@ -16,13 +16,35 @@
 // });
 
 var res = 1;
+var componentes_faltantes;
 
 $(document).ajaxStop(function() {
-  alert("res = " + res);
+  console.log("res = " + res);
+
+	$('#disponibilidad').text("La disponibilidad es: " + res);
+	var componentes = "";
+	var N = componentes_faltantes.length;
+	for (var i = 0; i < N ; i++) {
+		
+		if (i == N-1) {
+			componentes += componentes_faltantes[i];
+		} else {
+			componentes += componentes_faltantes[i] + ", ";
+		}
+
+		
+	}
+	if (N > 0) {
+		$('#excluido').text("Se excluyeron los siguientes componentes, debido a que no dieron respuesta: " + componentes);
+	}
+
+
+
+
 });
 
 function fun() {
-
+	componentes_faltantes = []
 	var disp_servidor = -1, disp_smbd = -1, disp_aplicacion = -1, disp_internet = -1, disp_router = -1;
 	
 
@@ -33,9 +55,9 @@ function fun() {
 		    url: 'http://127.0.0.1:8080/servidor/disponibilidad/01-2016',
 		    dataType: "json",
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		    	alert(thrownError);
-		        alert(ajaxOptions);
+		        console.log("Status: " + xhr.status);
+		    	console.log("thrownError: " + thrownError);
+		        console.log("ajaxOptions: " + ajaxOptions);
 		               
 		        },
 		    success: function(msg){
@@ -46,6 +68,8 @@ function fun() {
 		    }
 
 	   });
+	} else {
+		componentes_faltantes.push('servidor');
 	}
 
 	if (Math.random() <= 0.8 ) {
@@ -55,9 +79,9 @@ function fun() {
 		    url: 'http://127.0.0.1:8080/router/disponibilidad/01-2016',
 		    dataType: "json",
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		    	alert(thrownError);
-		        alert(ajaxOptions);
+		        console.log("Status: " + xhr.status);
+		    	console.log("thrownError: " + thrownError);
+		        console.log("ajaxOptions: " + ajaxOptions);
 		               
 		        },
 		    success: function(msg){
@@ -68,6 +92,8 @@ function fun() {
 		    }
 
 	   });
+	} else {
+		componentes_faltantes.push('router');
 	}
 
 	if (Math.random() <= 0.8 ) {
@@ -77,9 +103,9 @@ function fun() {
 		    url: 'http://127.0.0.1:8080/smbd/disponibilidad/01-2016',
 		    dataType: "json",
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		    	alert(thrownError);
-		        alert(ajaxOptions);
+		        console.log("Status: " + xhr.status);
+		    	console.log("thrownError: " + thrownError);
+		        console.log("ajaxOptions: " + ajaxOptions);
 		               
 		        },
 		    success: function(msg){
@@ -90,6 +116,8 @@ function fun() {
 		    }
 
 	   });
+	} else {
+		componentes_faltantes.push('smbd');
 	}
 
 	if (Math.random() <= 0.8 ) {
@@ -99,9 +127,9 @@ function fun() {
 		    url: 'http://127.0.0.1:8080/aplicacion/disponibilidad/01-2016',
 		    dataType: "json",
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		    	alert(thrownError);
-		        alert(ajaxOptions);
+		        console.log("Status: " + xhr.status);
+		    	console.log("thrownError: " + thrownError);
+		        console.log("ajaxOptions: " + ajaxOptions);
 		               
 		        },
 		    success: function(msg){
@@ -112,6 +140,8 @@ function fun() {
 		    }
 
 	   });
+	} else {
+		componentes_faltantes.push('aplicacion');
 	}
 
 	if (Math.random() <= 0.8 ) {
@@ -121,9 +151,9 @@ function fun() {
 		    url: 'http://127.0.0.1:8080/internet/disponibilidad/01-2016',
 		    dataType: "json",
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		    	alert(thrownError);
-		        alert(ajaxOptions);
+		        console.log("Status: " + xhr.status);
+		    	console.log("thrownError: " + thrownError);
+		        console.log("ajaxOptions: " + ajaxOptions);
 		               
 		        },
 		    success: function(msg){
@@ -135,7 +165,7 @@ function fun() {
 
 	   });
 	} else {
-		console.log(res);
+		componentes_faltantes.push('internet');
 	}
 
 
