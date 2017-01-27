@@ -3,6 +3,7 @@ package recurso;
 /**
  *
  * @author Jose Castro
+ * @author Jose Alvarez
  */
 public class Global {
 

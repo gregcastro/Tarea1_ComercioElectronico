@@ -15,6 +15,7 @@ import recurso.Global;
 /**
  *
  * @author Jose Castro
+ * @author Jose Alvarez
  */
 @Path("/servidor/disponibilidad/{fecha}")
 public class Servidor {

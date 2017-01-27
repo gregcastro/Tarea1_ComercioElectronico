@@ -16,6 +16,7 @@ import recurso.Global;
 /**
  *
  * @author Jose Castro
+ * @author Jose Alvarez
  */
 @Path("/smbd/disponibilidad/{fecha}")
 public class BaseDeDatos {
